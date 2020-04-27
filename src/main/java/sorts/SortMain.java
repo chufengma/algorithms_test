@@ -11,8 +11,9 @@ public class SortMain {
     public static void main(String[] args) {
         int[] array = new int[]{12, 323, 223, 2, 5, 2, 34, 123};
 
-        Insertion.sort(array);
+//        Insertion.sort(array);
 //        Selection.sort(array);
+        ShellSort.sort(array);
 
         for(int result : array) {
             System.out.println(result + ",");

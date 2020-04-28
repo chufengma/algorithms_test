@@ -9,15 +9,23 @@ public class SortMain {
     }
 
     public static void main(String[] args) {
+//        Integer[] array = new Integer[]{12, 323, 223, 2, 5, 2, 34, 123};
         int[] array = new int[]{12, 323, 223, 2, 5, 2, 34, 123};
-
 //        Insertion.sort(array);
 //        Selection.sort(array);
         ShellSort.sort(array);
+        printComparable(array);
+    }
 
-        for(int result : array) {
+    public static void printComparable(int[] array) {
+        for(Object result : array) {
             System.out.println(result + ",");
         }
     }
 
+    public static void printComparable(Comparable[] array) {
+        for(Object result : array) {
+            System.out.println(result + ",");
+        }
+    }
 }

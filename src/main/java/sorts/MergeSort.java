@@ -7,7 +7,19 @@ package sorts;
 public class MergeSort {
 
     public static void mergeSort(int[] array) {
+        // 自顶向下 递归解决
         sort(array, 0, array.length - 1);
+    }
+
+    // TODO
+    public static void mergeSortFromBottom(int[] array) {
+        // 自底向上 循环解决
+        for (int i = 1; i < array.length - 1; i = i * 2) {
+            for (int j = 0; j < array.length - i; j += i * 2) {
+                int middle = j + i / 2;
+                merge(array, j, middle, j + i);
+            }
+        }
     }
 
     private static void sort(int[] array, int start, int end) {
@@ -47,7 +59,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] array = new int[]{1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
 //        merge(array, 0, 4, array.length - 1);
-        mergeSort(array);
+        mergeSortFromBottom(array);
         SortMain.printComparable(array);
     }
 

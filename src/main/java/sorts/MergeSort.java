@@ -6,18 +6,31 @@ package sorts;
  */
 public class MergeSort {
 
+    /***
+     * 以空间换时间。时间复杂度平均表现比较好，但需要额外的空间。适合大数据。
+     * 优点：排序所需时间和NlogN成正比，快
+     * 缺点：需要N的辅助空间
+     *
+     * 最欢的情况下复杂度O(~NlogN)。
+     * 自顶向下：递归方式基于分治思想。
+     * 自底向上：规定步长，层层外扩
+     */
     public static void mergeSort(int[] array) {
         // 自顶向下 递归解决
         sort(array, 0, array.length - 1);
     }
 
-    // TODO
     public static void mergeSortFromBottom(int[] array) {
         // 自底向上 循环解决
-        for (int i = 1; i < array.length - 1; i = i * 2) {
-            for (int j = 0; j < array.length - i; j += i * 2) {
-                int middle = j + i / 2;
-                merge(array, j, middle, j + i);
+        for (int i = 1; i < array.length / 2 + 1; i = i * 2) {
+            for (int j = 0; j < array.length - 1; j = j + i * 2) {
+                int min = j;
+                int max = j + i * 2 - 1;
+                if (max > array.length - 1) {
+                    max = array.length - 1;
+                }
+                int middle = (min + max) / 2;
+                merge(array, j, middle, max);
             }
         }
     }
@@ -46,7 +59,7 @@ public class MergeSort {
         for (int i = start; i < array.length; i++) {
             if (firstPos > middle) { // 第一堆用完，直接放置第二堆的数据
                 array[i] = tmpArray[secondPos++];
-            } else if (secondPos > end) {  // 第一堆用完，直接放置第一堆的数据
+            } else if (secondPos > end) {  // 第二堆用完，直接放置第一堆的数据
                 array[i] = tmpArray[firstPos++];
             } else if (tmpArray[firstPos] < tmpArray[secondPos]) { // 2堆都没有用完，比较大小
                 array[i] = tmpArray[firstPos++];

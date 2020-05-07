@@ -13,7 +13,8 @@ public class SortMain {
         int[] array = new int[]{12, 323, 223, 2, 5, 2, 34, 123};
 //        Insertion.sort(array);
 //        Selection.sort(array);
-        ShellSort.sort(array);
+//        ShellSort.sort(array);
+        QuickSort.sort(array);
         printComparable(array);
     }
 

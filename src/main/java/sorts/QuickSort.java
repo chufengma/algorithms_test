@@ -6,6 +6,10 @@ package sorts;
  */
 public class QuickSort {
 
+    /**
+     * 快速排序 处理大数据场景最快的排序算法
+     * 一般库都是使用快速排序
+     * */
     public static void sort(int[] array) {
         oneSort(array, 0, array.length - 1);
     }

@@ -1,11 +1,24 @@
 package sorts;
 
+import java.util.List;
+
 public class SortMain {
 
     public static void exchange(int[] array, int i, int j) {
         int tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
+    }
+
+    public static void exchange(List array, int i, int j) {
+        Object tmp = array.get(i);
+        Object tmpJ = array.get(j);
+
+        array.remove(i);
+        array.add(i, tmpJ);
+
+        array.remove(j);
+        array.add(j, tmp);
     }
 
     public static void main(String[] args) {
@@ -26,6 +39,12 @@ public class SortMain {
     }
 
     public static void printComparable(Comparable[] array) {
+        for(Object result : array) {
+            System.out.println(result + ",");
+        }
+    }
+
+    public static void printList(List array) {
         for(Object result : array) {
             System.out.println(result + ",");
         }
